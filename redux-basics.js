@@ -1,3 +1,5 @@
+// redux in node js way
+
 const redux = require('redux');
 
 const createStore = redux.createStore;
