@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
 
 import './index.css';
 import App from './App';
@@ -30,7 +31,11 @@ const logger = store => {
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 // compose, it is little bit of similar to combineReducers. CombineReducer is combined the reducers. compose allows us to combine Enhancers.
 
-const store = createStore(rootReducer, composeEnhancers(applyMiddleware(logger)));
+// it is not using react thunk middleware
+const store = createStore(rootReducer, composeEnhancers(applyMiddleware(logger, thunk)));
+
+// react thunk is a third party library. which provides middleware, dispatch actions asynchronously, and so on. 
+
 
 ReactDOM.render(
 	<Provider store={store}>
